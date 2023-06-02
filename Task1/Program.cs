@@ -9,13 +9,16 @@ class Program {
         double firstNumber = GetDoubleNumber();
         Console.Write("Введите второе число: ");
         int secondNumber = GetIntNumber();
-        double result = 1;
-        for (int i = 1; i <= secondNumber; i++)
-        {
-            result *= firstNumber;
+        if (CheckNumber(secondNumber)) {
+            double result = 1;
+            for (int i = 1; i <= secondNumber; i++) {
+                result *= firstNumber;
+            }
+            Console.WriteLine($"Степень числа {firstNumber} с натуральным показателем {secondNumber} равна {result}");
         }
-  
-        Console.WriteLine($"Степень числа {firstNumber} с натуральным показателем {secondNumber} равна {result}");
+        else {
+            Console.WriteLine("Второе число должно быть натуральным, т.е. положительным");
+        }
      }
 
      static int GetIntNumber() {
@@ -30,5 +33,9 @@ class Program {
         double number;
         bool isNumber = Double.TryParse(stringNumber, out number);
         return number;
+     }
+
+     static bool CheckNumber(int number) {
+        return number > 0;
      }
 }
